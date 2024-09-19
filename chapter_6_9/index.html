@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Expressions</title>
+
+    <style>
+        button {
+            padding: 12px;
+            border-radius: 35px;
+            margin: 20px auto;
+            border: 0px;
+            color: white;
+            background-color: rgb(30, 165, 172);
+        }
+
+        button:hover{
+            opacity: 0.5;
+        }
+
+        input{
+            padding: 10px;
+            border: 1px solid blue;
+            text-align: center ;
+            border-radius: 5px;
+        }
+
+        select{
+            padding: 9px;
+            border: 1px solid blue;
+            
+        }
+
+        #result{
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="text">
+        <input type="number" placeholder="Enter First Number" id="firstNumber">
+        <input type="number" placeholder="Enter Second Number" id="secondNumber">
+    </label>
+    <select id="operation">
+        <option value="add">Addition</option>
+        <option value="subtract">Subtraction</option>
+        <option value="multiply">Multiplication</option>
+        <option value="divide">Division</option>
+    </select>
+    <br>
+    <button onclick="calculate()">Calculate</button>
+    <div id="result"></div>
+
+    <script>
+        function calculate() {
+            const firstNumber = parseFloat(document.getElementById("firstNumber").value);
+            const secondNumber = parseFloat(document.getElementById("secondNumber").value);
+            const operation = document.getElementById("operation").value;
+            let result;
+
+
+            if (isNaN(firstNumber) || isNaN(secondNumber)) {
+                result = "Please enter valid numbers!";
+            } else {
+                switch (operation) {
+                    case "add":
+                        result = firstNumber + secondNumber;
+                        break;
+                    case "subtract":
+                        result = firstNumber - secondNumber;
+                        break;
+                    case "multiply":
+                        result = firstNumber * secondNumber;
+                        break;
+                    case "divide":
+                        result = secondNumber !== 0 ? firstNumber / secondNumber : "Cannot divide by zero!";
+                        break;
+                }
+            }
+
+            document.getElementById("result").innerText = `Result: ${result}`;
+        }
+            
+    
+    </script>
+</body>
+
+</html>
